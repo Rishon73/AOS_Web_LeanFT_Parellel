@@ -16,31 +16,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-
         mcutils = new MCUtils();
-        /*
-        // SRF browser
-        BrowserDescription bd = new BrowserDescription();
-        bd.setType(BrowserType.CHROME); //or: bd.set("type", BrowserType.INTERNET_EXPLORER) or: bd.set("type", "INTERNET_EXPLORER")
-        bd.set("version", "57");
-        bd.set("osType", "Windows");
-        bd.set("osVersion", "10");
-        bd.set("testName", "My LeanFT web test");
-
-        // SRF mobile device browser
-        DeviceDescription dd = new DeviceDescription();
-        dd.setOsType("Android"); //or: dd.set("osType", "Android")
-        dd.setOsVersion("5.02"); //or: dd.set("osVersion", "5.02")
-        dd.set("testName", "My LeanFT mobile test");
-        Device device = SrfLab.lockDevice(dd);
-
-        Browser br = BrowserFactory.launch(BrowserType.CHROME, device);
-
-        // Local browder
-        Browser browser2 = BrowserFactory.launch(BrowserType.CHROME);
-
-        // Browder on Mobile device in MC
-        */
     }
 
     @AfterClass
@@ -76,6 +52,7 @@ public class LeanFtTest extends UnitTestClassBase {
         runMyTest(test.getBrowser());
     }
 
+    // Execute the actual test
     private void runMyTest(Browser browser) throws Exception {
         mcutils.logMessages("Navigate to...", LOG_LEVEL.INFO);
         browser.navigate("http://tinyurl.com/hpe-shop");
