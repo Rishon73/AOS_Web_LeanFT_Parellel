@@ -5,17 +5,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.hp.lft.sdk.*;
 import com.hp.lft.sdk.web.*;
-import com.hp.lft.sdk.mobile.*;
-import com.hp.lft.verifications.*;
-import java.util.*;
 
 import unittesting.*;
 
 public class LeanFtTest extends UnitTestClassBase {
 
-    DoTest doTest;
+    BrowserBuilder browserBuilder;
     MCUtils mcutils;
 
     @BeforeClass
@@ -59,22 +55,36 @@ public class LeanFtTest extends UnitTestClassBase {
     public void afterMethod() throws Exception {
     }
 
-    @Test //(threadPoolSize = 3, invocationCount = 1)
-    public void test() throws Exception {
-
-        DoTest test = new DoTest(BrowserType.FIREFOX);
-        //DoTest test = new DoTest(BrowserType.CHROME, "63", "Windows", "10", "Shiff's remote test");
-
-        mcutils.logMessages("1", LOG_LEVEL.INFO);
-        Browser browser = test.getBrowser();
-
-        mcutils.logMessages("2", LOG_LEVEL.INFO);
-        browser.navigate("http://tinyurl.com/hpe-shop");
-
-
-
-        mcutils.logMessages("3", LOG_LEVEL.INFO);
-        mcutils.windowSync(20000);
+    @Test
+    public void SRFMobileBrowser() throws Exception {
+        BrowserBuilder test = new BrowserBuilder(BrowserType.CHROME, "ZX1G22D3VD", "Shiff's remote SRF mobile browser test");
+        mcutils.logMessages("SRF mobile browser test", LOG_LEVEL.INFO);
+        runMyTest(test.getBrowser());
     }
 
+    @Test //(threadPoolSize = 3, invocationCount = 1)
+    public void SRFBrowser() throws Exception {
+        BrowserBuilder test = new BrowserBuilder(BrowserType.CHROME, "63", "Windows", "10", "Shiff's remote browser test");
+        mcutils.logMessages("SRF browser test", LOG_LEVEL.INFO);
+        runMyTest(test.getBrowser());
+    }
+
+    @Test
+    public void localBrowser() throws Exception {
+        BrowserBuilder test = new BrowserBuilder(BrowserType.CHROME);
+        mcutils.logMessages("Local browser test", LOG_LEVEL.INFO);
+        runMyTest(test.getBrowser());
+    }
+
+    private void runMyTest(Browser browser) throws Exception {
+        mcutils.logMessages("Navigate to...", LOG_LEVEL.INFO);
+        browser.navigate("http://tinyurl.com/hpe-shop");
+
+        mcutils.logMessages("waiting 10 seconds", LOG_LEVEL.INFO);
+        mcutils.windowSync(10000);
+
+        mcutils.logMessages("Closing browser", LOG_LEVEL.INFO);
+        browser.close();
+
+    }
 }
