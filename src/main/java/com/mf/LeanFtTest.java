@@ -62,6 +62,10 @@ public class LeanFtTest extends UnitTestClassBase {
         mcutils.logMessages("waiting 10 seconds", LOG_LEVEL.INFO);
         mcutils.windowSync(10000);
 
+        AOSWebAppModel appModel = new AOSWebAppModel(browser);
+        appModel.MICEShopNowLink().click();
+        appModel.expensiveMouse().click();
+        appModel.SaveToCartButton().click();
         
 
         if (closeBrowser) {

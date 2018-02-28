@@ -16,7 +16,7 @@
         </object>
         <object type="Image" technology="Web">
             <name>fetchImage?image_id=5600</name>
-            <codeName>FetchImageImageId5600Image</codeName>
+            <codeName>expensiveMouse</codeName>
             <description></description>
             <identification>
                 <properties>
