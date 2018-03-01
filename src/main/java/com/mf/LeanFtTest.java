@@ -31,7 +31,6 @@ public class LeanFtTest extends UnitTestClassBase {
     public void afterMethod() throws Exception {
     }
 
-/*
     @Test
     public void SRFMobileBrowser() throws Exception {
         BrowserBuilder test = new BrowserBuilder(BrowserType.CHROME, "ZX1G22D3VD", "Shiff's remote SRF mobile browser test");
@@ -45,7 +44,6 @@ public class LeanFtTest extends UnitTestClassBase {
         mcutils.logMessages("SRF browser test", LOG_LEVEL.INFO);
         runMyTest(test.getBrowser(), false);
     }
-*/
 
     @Test
     public void localBrowser() throws Exception {
@@ -61,12 +59,12 @@ public class LeanFtTest extends UnitTestClassBase {
 
         mcutils.logMessages("waiting 10 seconds", LOG_LEVEL.INFO);
         mcutils.windowSync(10000);
-
+/*
         AOSWebAppModel appModel = new AOSWebAppModel(browser);
         appModel.MICEShopNowLink().click();
         appModel.expensiveMouse().click();
         appModel.SaveToCartButton().click();
-        
+        */
 
         if (closeBrowser) {
             mcutils.logMessages("Closing browser", LOG_LEVEL.INFO);
