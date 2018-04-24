@@ -11,8 +11,8 @@ import unittesting.*;
 
 public class LeanFtTest extends UnitTestClassBase {
 
-    BrowserBuilder browserBuilder;
-    MCUtils mcutils;
+    private BrowserBuilder browserBuilder;
+    private MCUtils mcutils;
 
     @BeforeClass
     public void beforeClass() throws Exception {
@@ -31,7 +31,7 @@ public class LeanFtTest extends UnitTestClassBase {
     public void afterMethod() throws Exception {
     }
 
-    @Test
+    //@Test
     public void SRFMobileBrowser() throws Exception {
         BrowserBuilder test = new BrowserBuilder(BrowserType.CHROME, "ZX1G22D3VD", "Shiff's remote SRF mobile browser test");
         mcutils.logMessages("SRF mobile browser test", LOG_LEVEL.INFO);
@@ -45,7 +45,7 @@ public class LeanFtTest extends UnitTestClassBase {
         runMyTest(test.getBrowser(), false);
     }
 
-    @Test
+    //@Test
     public void localBrowser() throws Exception {
         BrowserBuilder test = new BrowserBuilder(BrowserType.CHROME);
         mcutils.logMessages("Local browser test", LOG_LEVEL.INFO);
@@ -64,8 +64,7 @@ public class LeanFtTest extends UnitTestClassBase {
         appModel.MICEShopNowLink().click();
         appModel.expensiveMouse().click();
         appModel.SaveToCartButton().click();
-        */
-
+*/
         if (closeBrowser) {
             mcutils.logMessages("Closing browser", LOG_LEVEL.INFO);
             browser.close();
