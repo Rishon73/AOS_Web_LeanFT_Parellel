@@ -5,6 +5,8 @@ import com.hp.lft.sdk.*;
 import com.hp.lft.sdk.web.*;
 import com.hp.lft.sdk.mobile.*;
 
+enum LabType {SRF, MC};
+
 public class BrowserBuilder {
 
     private Browser browser;
@@ -21,11 +23,17 @@ public class BrowserBuilder {
     }
 
     // SRF mobile browser
-    public BrowserBuilder(BrowserType browserType, String deviceID, String testName) throws Exception {
+    public BrowserBuilder(LabType labType, BrowserType browserType, String deviceID, String testName) throws Exception {
         DeviceDescription dd = new DeviceDescription();
         dd.setId(deviceID);
-        dd.set("testName", testName);
-        Device device = SrfLab.lockDevice(dd);
+        Device device;
+        if (labType == LabType.SRF) {
+            dd.set("testName", testName);
+            device = SrfLab.lockDevice(dd);
+        }
+        else
+            device = MobileLab.lockDevice(dd);
+
         browser = BrowserFactory.launch(browserType, device);
     }
 

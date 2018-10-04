@@ -33,17 +33,25 @@ public class LeanFtTest extends UnitTestClassBase {
 
     //@Test
     public void SRFMobileBrowser() throws Exception {
-        BrowserBuilder test = new BrowserBuilder(BrowserType.CHROME, "ZX1G22D3VD", "Shiff's remote SRF mobile browser test");
+        BrowserBuilder test = new BrowserBuilder(LabType.SRF, BrowserType.CHROME, "0a9e0bfe", "Shiff's remote SRF mobile browser test");
         mcutils.logMessages("SRF mobile browser test", LOG_LEVEL.INFO);
         runMyTest(test.getBrowser(), false);
     }
 
-    @Test //(threadPoolSize = 3, invocationCount = 1)
+    //@Test //(threadPoolSize = 3, invocationCount = 1)
     public void SRFBrowser() throws Exception {
         BrowserBuilder test = new BrowserBuilder(BrowserType.CHROME, "63", "Windows", "10", "Shiff's remote browser test");
         mcutils.logMessages("SRF browser test", LOG_LEVEL.INFO);
         runMyTest(test.getBrowser(), false);
     }
+
+    @Test //(threadPoolSize = 3, invocationCount = 1)
+    public void MCMobileBrowser() throws Exception {
+        BrowserBuilder test = new BrowserBuilder(LabType.MC, BrowserType.CHROME, "0a9e0bfe", "Shiff's mobile browser test in MC");
+        mcutils.logMessages("SRF mobile browser test", LOG_LEVEL.INFO);
+        runMyTest(test.getBrowser(), false);
+    }
+
 
     //@Test
     public void localBrowser() throws Exception {
@@ -59,6 +67,11 @@ public class LeanFtTest extends UnitTestClassBase {
 
         mcutils.logMessages("waiting 10 seconds", LOG_LEVEL.INFO);
         mcutils.windowSync(10000);
+
+        mcutils.logMessages("Run you test here...", LOG_LEVEL.INFO);
+        mcutils.logMessages("waiting 10 seconds...", LOG_LEVEL.INFO);
+        mcutils.windowSync(10000);
+
 /*
         AOSWebAppModel appModel = new AOSWebAppModel(browser);
         appModel.MICEShopNowLink().click();
